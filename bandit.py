@@ -84,10 +84,11 @@ if __name__ == "__main__":
         for i in xrange(10000):
             count += 1
             arm = bandit.select_arm()
-            url = 'http://dfc-ml.herokuapp.com/{type}?k={arm}&u={username}'.format(type="0", arm=arm.index, username="Ruby")
+            url = 'http://dfc-ml.herokuapp.com/{type}?k={arm}&u={username}'.format(type="0", arm=arm.index, username="Penelope")
             r = requests.get(url)
             reward = float(r.text)
             bandit.update(arm, reward)
             total_reward += reward
+        print"Test"
         print "Count: {count}\nTotal_reward: {total_reward}\nAverage Reward: {avg}\nProbability Distribution across arms:]n{pdist}\n".format(count=count, total_reward=total_reward, avg=total_reward/count, pdist=bandit.probability_distribution())
         break
